@@ -88,6 +88,12 @@ void loop()
     x_quantized[i] = static_cast<int8_t>(x[i] / input->params.scale + input->params.zero_point);
   }
   
+  // Serial.println(x[1]);
+  // Serial.println(input->params.zero_point);
+  // Serial.println(input->params.scale);
+  // Serial.println(x_quantized[1]);
+  // Serial.println("");
+
   // Place the quantized input in the model's input tensor
   // input->data.int8[0] = x_quantized;
   // Copy the quantized input into the model's input tensor
@@ -106,11 +112,27 @@ void loop()
   }
 
   // Obtain the quantized output from model's output tensor
-  int8_t y_quantized = output->data.int8[0];
+  // int8_t y_quantized = output->data.int8[0];
   
   // Dequantize the output from integer to floating-point
-  float y = (y_quantized - output->params.zero_point) * output->params.scale;
-  Serial.println(y);
+  // float y = (y_quantized - output->params.zero_point) * output->params.scale;
+  // Serial.println(y_quantized);
+  // Serial.println(output->params.zero_point);
+  // Serial.println(output->params.scale);
+  // Serial.println(y);
+  // Serial.println("");
+
+   // print the output tensor (800)
+    for (int i = 0; i < 800; i++) 
+    {
+      int8_t y_quantized = output->data.int8[i];
+      float y_val = (y_quantized - output->params.zero_point) * output->params.scale;
+      Serial.print(y_val);
+      Serial.print(",");
+      // vTaskDelay(pdMS_TO_TICKS(1)); // Delay for 1 milliseconds
+      delay(0.1);
+    }//end for
+    Serial.println("");
 
   // delay 1 second 
   delay(1);
