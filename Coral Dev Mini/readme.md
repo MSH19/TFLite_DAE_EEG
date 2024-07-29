@@ -1,6 +1,6 @@
 # Running TFLite model on Coral Dev Mini board     
 
-# edgeTPU compilation:   
+## edgeTPU compilation:   
 
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -    
 
