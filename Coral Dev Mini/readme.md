@@ -1,7 +1,5 @@
 # Running TFLite model on Coral Dev Mini board     
 
-# Running deep learning auto-encoder models on embedded systems
-
 ## Introduction   
 In this demo, we explain how to run ML models on embedded systems:      
 
