@@ -1,5 +1,4 @@
-
-Arduino 
+Arduino Nano 33 BLE
 inference time is 1.34 seconds on average 
 5.13 V
 IBUS: 0.0240 A
