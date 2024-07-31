@@ -18,7 +18,7 @@ VBUS = 5.04 V
 IBUS = 0.128 A = 128 mA      
 PBUS = 0.648 W = 648 mW   
 
-Coral Mini Dev:
+### Coral Mini Dev:
 
 - Running TFlite Float model on Coral mini Dev:       
 Total runtime (1712 samples) = 28.32 seconds      
