@@ -1,15 +1,19 @@
+# This script loads the Autoencoder_revision model (basic model) and converts it to TFLite models:
+# 1- daefloat (float TFLite model)
+# 2- daeint8 (int8 TFLite model (quantized))
+
 # include libraries 
 import tensorflow as tf
 import numpy as np
 from tensorflow import keras
 import os
 
-# Get the current working directory
+# get the current working directory
 current_path = os.getcwd()
 trained_model_name = "Autoencoder_revision"
 full_path_model = os.path.join(current_path, trained_model_name)
 
-# Load the DAE model
+# load the DAE model
 autoencoder_model = tf.keras.models.load_model(full_path_model)
 autoencoder_model.summary()
 

@@ -12,6 +12,10 @@
 // Globals, used for compatibility with Arduino-style sketches.
 namespace 
 {
+
+  unsigned long startMicros;
+  unsigned long endMicros;
+  unsigned long elapsedMicros;
   
 const tflite::Model* model = nullptr;
 tflite::MicroInterpreter* interpreter = nullptr;
@@ -102,9 +106,17 @@ void loop()
     input->data.int8[i] = x_quantized[i];
   }
 
+   //////////////////////////////////////// Record the start time
+  startMicros = micros();
+
   // Run inference, and report any error
   TfLiteStatus invoke_status = interpreter->Invoke();
-  
+
+    // Record the end time
+  endMicros = micros();
+  // calculate the elapsed time
+  elapsedMicros = endMicros - startMicros;
+
   if (invoke_status != kTfLiteOk) 
   {
     // MicroPrintf("Invoke failed on x: %f\n", static_cast<double>(x));
@@ -133,6 +145,8 @@ void loop()
       delay(0.1);
     }//end for
     Serial.println("");
+    // print the elapsed time 
+    Serial.println(elapsedMicros);
 
   // delay 1 second 
   delay(1);
